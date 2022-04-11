@@ -98,7 +98,7 @@ export default {
 
 <style scoped lang="scss">
     .navigation {
-        background-color: #fff;
+        background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(255,51,255,1) 100%);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -108,7 +108,7 @@ export default {
         width: 100vw;
         // z-index: 2;
         font-size: 1rem;
-        color: black;
+        color: white;
         min-height: 8rem;
 
         &--list {
@@ -142,6 +142,13 @@ export default {
             cursor: pointer;
             padding: 2rem 1rem;
             text-decoration: none;
+            color: white;
+
+            &:focus {
+                position: relative;
+                outline: 1px solid transparent;
+                animation: animate .7s infinite;
+            }
         }
     }   
 
@@ -162,6 +169,7 @@ export default {
             .navigation--item span:nth-child(1) {
                 animation-delay: 0s;
             }
+            
             .navigation--item span:nth-child(2) {
                 animation-delay: .1s;
             }
@@ -228,7 +236,7 @@ export default {
     }
 
     .logo {
-        width: 7rem;
+        width: 7.01rem;
         position: absolute;
         left: 0;
         top: 0;

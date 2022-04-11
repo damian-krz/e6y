@@ -18,6 +18,7 @@ export default {
         justify-content: center;
         align-items: center;
         padding: 2rem;
+        background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(255,51,255,1) 100%);
 
         &__video { 
             width: 100vw;
