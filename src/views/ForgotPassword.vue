@@ -176,7 +176,7 @@ export default {
                 background-color: #FFA500;
             }
             84% {
-                color:#4B0082;
+                color:#4B0082; 
                 background-color: #FE2020;
             }
             100% {

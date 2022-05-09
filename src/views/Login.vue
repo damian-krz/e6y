@@ -52,7 +52,6 @@ export default {
                 this.error = true;
                 this.errorMsg = err.message;
             });
-            console.log(firebase.auth().currentUser);
         },
     },
 }
