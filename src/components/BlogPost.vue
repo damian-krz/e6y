@@ -1,6 +1,6 @@
 <template>
     <div class="blogPost">
-        <div class="blogPost__config">
+        <div class="blogPost__config" v-if="isLogged">
             <a href="#" class="blogPost__config--header">Edytuj</a>
         </div>
         <div class="blogPost__image">
@@ -17,6 +17,13 @@
 export default {
     name: 'BlogPost',
     props: ['post'],
+
+    data() {
+      return {
+        isLogged: true,
+        
+      };
+    },
 }
 </script>
 

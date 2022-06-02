@@ -4,6 +4,7 @@ import Blog from '../views/Blog.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import ForgotPassword from '../views/ForgotPassword.vue'
+import NetArtGallery from '../views/NetArtGallery.vue'
 
 const routes = [
   {
@@ -44,6 +45,14 @@ const routes = [
     component: ForgotPassword,
     meta: {
       title: 'FORGOT PASSWORD'
+    }
+  },
+  {
+    path: '/net-art-gallery',
+    name: 'NetArtGallery',
+    component: NetArtGallery,
+    meta: {
+      title: 'NET.ART GALLERY'
     }
   }
 ]

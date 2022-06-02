@@ -9,7 +9,7 @@
                 <router-link class="navigation--button" :to="{ name: 'Home' }"><span>H</span><span>o</span><span>m</span><span>e</span><span>P</span><span>a</span><span>g</span><span>e</span></router-link>
             </li>
             <li class="navigation--item">
-                <a class="navigation--button menu">net.art.gallery</a>
+                <router-link class="navigation--button menu" :to="{ name: 'NetArtGallery' }">net.art.gallery</router-link>
             </li>
             <li class="navigation--item">
                 <a class="navigation--button menu">Shop</a>
@@ -32,7 +32,7 @@
                 <router-link class="navigation--button" :to="{ name: 'Home' }"><span>H</span><span>o</span><span>m</span><span>e</span><span>P</span><span>a</span><span>g</span><span>e</span></router-link>
             </li>
             <li class="navigation--item" @click="toggleMobileNav">
-                <a class="navigation--button menu">net.art.gallery</a>
+                <router-link class="navigation--button menu" :to="{ name: 'NetArtGallery' }">net.art.gallery</router-link>
             </li>
             <li class="navigation--item" @click="toggleMobileNav">
                 <a class="navigation--button menu">Shop</a>
