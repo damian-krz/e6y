@@ -1,7 +1,7 @@
 <template>
-    <div class="netArtGalleryContainer" @mouseover="mouseOver">
-        <p class="netArtGalleryContainer__content" style="transform: rotateY(45deg)" @mouseover="mouseOver">e</p>
+    <div class="netArtGalleryContainer" >
         <img class="test" :src="src" alt="">
+        <p class="netArtGalleryContainer__content" style="transform: rotateY(45deg)" @mouseover="mouseOver">e</p>
     </div>
 </template>
 
@@ -11,7 +11,7 @@ export default {
 
     data() {
         return {
-            src: 'C:/Users/48726/Desktop/KursWWW/NetArtVue/artnet/src/assets/gallery/1.jpg',
+            src: 'C:/Users/48726/Desktop/KursWWW/NetArtVue/artnet/src/assets/ey1.png'
         }
     },
 
@@ -55,22 +55,10 @@ export default {
             let rotate = `rotateY(${getRandomRotate()}deg)`;
             return rotate;
         };
-
-            let array = [1,2,3,4,5];
-        for(let i = 0; i < 12; i++) {
-            let item = array2[Math.floor(Math.random()*array.length)];
-            
-            // let link = `https://www.youtube.com/watch?v=${some}`
-        console.log(item);
-        }
     },
 
     methods: {
-        
-        mouseOver: function() {
-            let letter = document.createElement('a');
-            letter.innerHTML = 'hehe';
-        }
+
     }
 
 }
