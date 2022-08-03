@@ -4,7 +4,7 @@
   <VideoGallery />
   <Gallery />
   <Slider />
-  <Game />
+
 </template>
 
 <script>
@@ -12,7 +12,6 @@ import HeroClip from '../components/HeroClip.vue';
 import Skit from '../components/Skit.vue';
 import VideoGallery from '../components/VideoGallery.vue';
 import Slider from '../components/Slider.vue';
-import Game from '../components/Game.vue';
 import Gallery from '../components/Gallery.vue';
 
 export default {
@@ -24,7 +23,7 @@ export default {
         VideoGallery,
         Slider,
         Gallery,
-        Game,
+
     }, 
 }
 </script>

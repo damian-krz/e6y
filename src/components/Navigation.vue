@@ -12,13 +12,13 @@
                 <router-link class="navigation--button menu" :to="{ name: 'NetArtGallery' }">net.art.gallery</router-link>
             </li>
             <li class="navigation--item">
-                <a class="navigation--button menu">Shop</a>
+                <a class="navigation--button menu" style="display: none">Shop</a>
             </li>
             <li class="navigation--item">
                 <router-link class="navigation--button menu" :to="{ name: 'Blog' }">Blog</router-link>
             </li>
             <li class="navigation--item">
-                <a class="navigation--button menu">About Us</a>
+                <router-link class="navigation--button menu" :to="{ name: 'AboutUs' }">About Us</router-link>
             </li>
         </ul>
     </nav>
@@ -41,7 +41,7 @@
                 <router-link class="navigation--button menu" :to="{ name: 'Blog' }">Blog</router-link>
             </li>
             <li class="navigation--item" @click="toggleMobileNav">
-                <a class="navigation--button menu">About Us</a>
+                <router-link class="navigation--button menu" :to="{ name: 'AboutUs' }">About Us</router-link>
             </li>
         </ul>
     </transition>

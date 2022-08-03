@@ -22,7 +22,7 @@ export default {
         netArtGalleryContainer.addEventListener('mousemove', () => {
             let letter = document.createElement('a');
             letter.innerHTML = 'y';
-            letter.setAttribute('href', 'https://www.youtube.com/watch?v=Vg5v2vVmDC8');
+            letter.setAttribute('href', 'https://www.youtube.com/shorts/ET19JYJe7e8');
             letter.setAttribute('target', '_blank');
             letter.style.color = getColor();
             letter.style.transform = getRotate();

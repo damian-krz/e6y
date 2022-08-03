@@ -25,6 +25,7 @@ export default createStore({
     profileUsername: null,
     profileId: null,
     profileInitials: null,
+    blueScreenCount: 5,
   },
   mutations: {
     updateUser(state, payload) { 
@@ -40,6 +41,9 @@ export default createStore({
     setProfileInitials(state) {
       state.profileInitials = state.profileFirstName.match(/(\b\S)?/g).join("") +
       state.profileLastName.match(/(\b\S)?/g).join("");
+    },
+    setBlueScreenCount(state) {
+      state.blueScreenCount--;
     }
   },
   actions: {
@@ -50,6 +54,9 @@ export default createStore({
       commit("setProfileInitials");
       
     },
+    async blueScreen({commit}) {
+      commit("setBlueScreenCount");
+    }
   },
   modules: {
   }

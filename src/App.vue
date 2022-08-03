@@ -66,6 +66,6 @@ export default {
     scroll-behavior: smooth;
     overflow: hidden;
     background: black;
-    // height: 500vh;
+
   }
 </style>

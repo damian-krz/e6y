@@ -1,7 +1,7 @@
 <template>
   <div class="heroClip">
       <video controls class="heroClip__video">
-        <source src="../assets/insta.mp4" type="video/mp4">
+        <source src="../assets/heroClip.mp4" type="video/mp4">
       </video>
   </div>
 </template>
