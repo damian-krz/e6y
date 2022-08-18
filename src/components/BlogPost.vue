@@ -51,6 +51,12 @@ export default {
             font-weight: bold;
         }
 
+        &:nth-child(odd) {
+            color: white;
+            font-weight: bold;
+        }
+
+
         @media (min-width: 900px) {
             flex-direction: row;
         }

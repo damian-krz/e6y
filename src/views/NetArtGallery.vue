@@ -1,6 +1,5 @@
 <template>
-    <div class="netArtGalleryContainer" >
-        <img class="test" :src="src" alt="">
+    <div class="netArtGalleryContainer">
         <p class="netArtGalleryContainer__content" style="transform: rotateY(45deg)" @mouseover="mouseOver">e</p>
     </div>
 </template>
@@ -11,7 +10,12 @@ export default {
 
     data() {
         return {
-            src: 'C:/Users/48726/Desktop/KursWWW/NetArtVue/artnet/src/assets/ey1.png'
+            imagesOnChange: [
+                { url: 'ey1.png', alt: 'eyyyyyy' },
+                { url: 'ey2.png', alt: 'eyyyyyy' },
+                { url: 'ey3.png', alt: 'eyyyyyy' },
+                { url: 'ey4.png', alt: 'eyyyyyy' },
+            ],
         }
     },
 
@@ -34,7 +38,28 @@ export default {
             } else if(netArtGalleryContainerContent.childNodes.length == 104) {
                 window.scrollTo(0,document.body.scrollHeight);
                 let img = document.createElement('img');
-                img.setAttribute('src', '../assets/gallery/1.jpg');
+                img.style.width = "100px"; 
+                this.$store.dispatch("getNetArtEy");
+                let count = this.$store.state.netArtEyCount;
+
+                switch(count) {
+                    case 3: {
+                        img.setAttribute("src", this.getImgUrl(this.imagesOnChange[0].url));
+                        break;
+                    }
+                    case 2: {
+                        img.setAttribute("src", this.getImgUrl(this.imagesOnChange[1].url));
+                        break;
+                    }
+                    case 1: {
+                        img.setAttribute("src", this.getImgUrl(this.imagesOnChange[2].url));
+                        break;
+                    }
+                    case 0: {
+                        img.setAttribute("src", this.getImgUrl(this.imagesOnChange[3].url));
+                        break;
+                    }
+                }
                 netArtGalleryContainer.appendChild(img);
             }
         });
@@ -58,7 +83,9 @@ export default {
     },
 
     methods: {
-
+        getImgUrl: function (imagePath) {
+            return require('@/assets/' + imagePath);
+        },
     }
 
 }
@@ -66,6 +93,7 @@ export default {
 
 <style lang="scss" scoped>
     .netArtGalleryContainer {
+        margin-top: 8rem;
         background-color: pink;
 
         &__content {

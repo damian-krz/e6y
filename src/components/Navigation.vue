@@ -6,19 +6,22 @@
     <nav class="navigation">
         <ul class="navigation--list" v-show="!mobile">
             <li class="navigation--item">
-                <router-link class="navigation--button" :to="{ name: 'Home' }"><span>H</span><span>o</span><span>m</span><span>e</span><span>P</span><span>a</span><span>g</span><span>e</span></router-link>
+                <router-link class="navigation--button menu" :to="{ name: 'Home' }"><span>H</span><span>o</span><span>m</span><span>e</span><span>P</span><span>a</span><span>g</span><span>e</span></router-link>
             </li>
             <li class="navigation--item">
                 <router-link class="navigation--button menu" :to="{ name: 'NetArtGallery' }">net.art.gallery</router-link>
             </li>
             <li class="navigation--item">
-                <a class="navigation--button menu" style="display: none">Shop</a>
+                <a class="navigation--button menu" target="_blank" href="https://www.instagram.com/eyyyyyy.store/">Shop</a>
             </li>
             <li class="navigation--item">
                 <router-link class="navigation--button menu" :to="{ name: 'Blog' }">Blog</router-link>
             </li>
             <li class="navigation--item">
                 <router-link class="navigation--button menu" :to="{ name: 'AboutUs' }">About Us</router-link>
+            </li>
+            <li class="navigation--item">
+                <a class="navigation--button menu" target="_blank" href="https://www.instagram.com/eyyyyyy.pl/">Insta</a>
             </li>
         </ul>
     </nav>
@@ -35,13 +38,16 @@
                 <router-link class="navigation--button menu" :to="{ name: 'NetArtGallery' }">net.art.gallery</router-link>
             </li>
             <li class="navigation--item" @click="toggleMobileNav">
-                <a class="navigation--button menu">Shop</a>
+                <a class="navigation--button menu" target="_blank" href="https://www.instagram.com/eyyyyyy.store/">Shop</a>
             </li>
             <li class="navigation--item" @click="toggleMobileNav">
                 <router-link class="navigation--button menu" :to="{ name: 'Blog' }">Blog</router-link>
             </li>
             <li class="navigation--item" @click="toggleMobileNav">
                 <router-link class="navigation--button menu" :to="{ name: 'AboutUs' }">About Us</router-link>
+            </li>
+            <li class="navigation--item">
+                <a class="navigation--button menu" target="_blank" href="https://www.instagram.com/eyyyyyy.pl/">Insta</a>
             </li>
         </ul>
     </transition>
@@ -86,7 +92,7 @@ export default {
     mounted() {
         const navbar = document.querySelector('.navigation');
         window.onscroll = () => {
-            if (window.scrollY > 150) {
+            if (window.scrollY > 500) {
                 navbar.classList.add('nav-active');
             } else {
                 navbar.classList.remove('nav-active');
@@ -103,12 +109,11 @@ export default {
         justify-content: center;
         align-items: center;
         padding: 2rem;
-        // position: fixed;
-        // top: 0;
+        position: fixed;
+        top: 0;
         width: 100vw;
-        // z-index: 2;
+        z-index: 2;
         font-size: 1rem;
-        color: white;
         min-height: 8rem;
 
         &--list {
@@ -142,7 +147,7 @@ export default {
             cursor: pointer;
             padding: 2rem 1rem;
             text-decoration: none;
-            color: white;
+            color: black;
 
             &:focus {
                 position: relative;
@@ -153,9 +158,24 @@ export default {
     }   
 
     .nav-active {
-        background-color:black;
+        background: linear-gradient(
+            90deg,
+            rgba(255, 0, 0, 1) 0%,
+            rgba(255, 154, 0, 1) 10%,
+            rgba(208, 222, 33, 1) 20%,
+            rgba(79, 220, 74, 1) 30%,
+            rgba(63, 218, 216, 1) 40%,
+            rgba(47, 201, 226, 1) 50%,
+            rgba(28, 127, 238, 1) 60%,
+            rgba(95, 21, 242, 1) 70%,
+            rgba(186, 12, 248, 1) 80%,
+            rgba(251, 7, 217, 1) 90%,
+            rgba(255, 0, 0, 1) 100%
+        );
+    }
+
+    .nav-active .navigation--button {
         color: white;
-        transition: color .3s ease-in-out, background-color .3s ease-in-out;
     }
 
     span {
@@ -232,7 +252,7 @@ export default {
         }
 
     .menu {
-        transition: .3s ease-in-out;
+        transition: color .2s ease-in-out;
     }
 
     .logo {
@@ -244,7 +264,7 @@ export default {
     }
 
     .hamburgerButton {
-        position: absolute;
+        position: fixed;
         top: 0;
         right: 0;
         margin: 3.5rem 1.5rem;

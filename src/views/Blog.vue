@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="blogContainer">
     <BlogNavigation v-if="isLogged" />
     <BlogPost :post="post" v-for="(post, index) in sampleBlogPost" :key="index" />
   </div>
@@ -33,5 +33,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+  .blogContainer {
+    margin-top: 8rem;
+  }
 </style>

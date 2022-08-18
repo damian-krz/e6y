@@ -7,8 +7,8 @@ export default createStore({
   state: {
     sampleBlogPost: [
       {
-        blogTitle: 'This is sample title',
-        blogPost: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet suscipit metus. Suspendisse blandit velit purus, eget dictum dui accumsan sit amet. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean rhoncus ligula a justo viverra, eget dictum orci convallis. Sed sollicitudin lacinia lorem, non molestie risus. Nam vestibulum hendrerit dictum. Proin vel dignissim diam. Donec suscipit, lorem ut dictum facilisis, libero neque auctor nisi, eget dapibus justo lacus quis justo.',
+        blogTitle: 'Prezes zatrzymany',
+        blogPost: 'Z ostatniej chwili Prezes movementu zatrzymany przez psy ale nadal muvmenci.',
         blogPhoto: '3'
       },
       {
@@ -26,6 +26,8 @@ export default createStore({
     profileId: null,
     profileInitials: null,
     blueScreenCount: 5,
+    imageBgcCount: 5,
+    netArtEyCount: 3,
   },
   mutations: {
     updateUser(state, payload) { 
@@ -44,6 +46,15 @@ export default createStore({
     },
     setBlueScreenCount(state) {
       state.blueScreenCount--;
+    },
+    setImageBgc(state) {
+      state.imageBgcCount--;
+    },
+    setNetArtEy(state) {
+      state.netArtEyCount--;
+      if(state.netArtEyCount === -1) {
+        state.netArtEyCount = 3;
+      }
     }
   },
   actions: {
@@ -56,6 +67,12 @@ export default createStore({
     },
     async blueScreen({commit}) {
       commit("setBlueScreenCount");
+    },
+    async getImageBgc({commit}) {
+      commit("setImageBgc");
+    },
+    async getNetArtEy({commit}) {
+      commit("setNetArtEy");
     }
   },
   modules: {

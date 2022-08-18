@@ -2,6 +2,7 @@
 <div class="blueScreen">
     <router-link class="navigation--button" :to="{ name: 'Home' }"><img class="logo" src="../assets/logo.png" alt="logo"></router-link>
 </div>
+
     <div class="background">
             <div v-for="image in images" :key="image.url" class="gallery" >
                 <img :src="getImgUrl(image.url)" :alt="image.alt" class="gallery__img active niewiadomo">
@@ -26,26 +27,33 @@
                 <img :src="getImgUrl(image.url)" :alt="image.alt" class="gallery__img">
             </div>
             <div class="xdContent">
-                <img :src="getImgUrl(xd.url)" :alt="xd.alt" class="xd" @click="blueScreen">
+                <img :src="getImgUrl(xd[0].url)" :alt="xd.alt" class="xd" @click="blueScreen(); getImageBgc();">
             </div>
     </div>
 </template>
 
 <script>
-
+// import VueTypedJs from 'vue-typed-js';
 export default {
     name: 'AboutUs',
     data() {
         return {
+            colors: [
+                { color: 'red' },
+                { color: 'green' },
+            ],
             images: [
                 { url: 'niewiadomoRed.png', alt: 'eyyyyyy' },
             ],
-            xd: { url: 'XD.png', alt: 'XD' },
+            xd: [
+                { url: 'XD.png', alt: 'XD' },
+                { url: 'XDRed.jpg', alt: 'XD' }
+            ],
             imagesOnChange: [
                 { url: 'niewiadomoBlack.jpeg', alt: 'eyyyyyy' },
-                { url: 'niewiadomoBlue.jpeg', alt: 'eyyyyyy' },
                 { url: 'niewiadomoGreen.jpeg', alt: 'eyyyyyy' },
                 { url: 'niewiadomoOrange.jpeg', alt: 'eyyyyyy' },
+                { url: 'niewiadomoBlue.jpeg', alt: 'eyyyyyy' },
                 { url: 'niewiadomoPink.jpeg', alt: 'eyyyyyy' },
                 { url: 'niewiadomoPurple.jpeg', alt: 'eyyyyyy' },
                 { url: 'niewiadomoYellow.jpeg', alt: 'eyyyyyy' },
@@ -69,9 +77,30 @@ export default {
 
     unmounted() {
         this.$store.state.blueScreenCount = 5;
+        this.$store.state.imageBgcCount = 5;
     },
 
     methods: {
+        getImageBgc: function() {
+            let background = document.querySelector('.background');
+            this.$store.dispatch("getImageBgc");
+            let count = this.$store.state.imageBgcCount;
+
+            switch(count) {
+                case 4:
+                    background.style.backgroundImage = `url(${this.getImgUrl(this.imagesOnChange[4].url)})`;
+                    break;
+                case 3:
+                    background.style.backgroundImage = `url(${this.getImgUrl(this.imagesOnChange[5].url)})`;
+                    break;
+                case 2:
+                    background.style.backgroundImage = `url(${this.getImgUrl(this.imagesOnChange[6].url)})`;
+                    break;
+                case 1:
+                    background.style.backgroundImage = `url(${this.getImgUrl(this.imagesOnChange[7].url)})`;
+                    break;
+            }
+        },
         getImgUrl: function (imagePath) {
             return require('@/assets/aboutUs/' + imagePath);
         },
@@ -81,6 +110,7 @@ export default {
         blueScreen: function() {
             let blueScreen = document.querySelector('.blueScreen');
             let background = document.querySelector('.background');
+            let xd = document.querySelector('.xd');
             let gallery__img = document.querySelectorAll('.gallery__img');
             this.$store.dispatch("blueScreen");
             let count = this.$store.state.blueScreenCount;
@@ -88,34 +118,34 @@ export default {
             switch(count) {
                 case 4:
                 gallery__img.forEach(e => {
-                    e.setAttribute("src", this.getImgUrl(this.imagesOnChange[0].url));
+                    e.setAttribute("src", this.getImgUrl(this.imagesOnChange[3].url));
                 });
                     break;
                 case 3:
                 gallery__img.forEach(e => {
-                    e.setAttribute("src", this.getImgUrl(this.imagesOnChange[1].url));
+                    e.setAttribute("src", this.getImgUrl(this.imagesOnChange[2].url));
                 });
                     break;
                 case 2:
                 gallery__img.forEach(e => {
-                    e.setAttribute("src", this.getImgUrl(this.imagesOnChange[2].url));
+                    e.setAttribute("src", this.getImgUrl(this.imagesOnChange[1].url));
                 });
                     break;
                 case 1:
                 gallery__img.forEach(e => {
-                    e.setAttribute("src", this.getImgUrl(this.imagesOnChange[3].url));
+                    e.setAttribute("src", this.getImgUrl(this.imagesOnChange[0].url));
                 });
                     break;
                 case 0: 
+                    xd.setAttribute("src", this.getImgUrl(this.xd[1].url));
                     blueScreen.classList.add('activeBlueScreen');
-                    blueScreen.classList.add('flex');
                     const move = () => {
                         window.scrollTo(0, 0);
                         background.style.height = '0';
                     };
-                    const scrollToBlueScreen = setTimeout(move, 400);
                     let snd = new Audio(this.getBlueUrl('blueScreen.wav'));
                     snd.play();
+                    const scrollToBlueScreen = setTimeout(move, 1000);
                     break;
             }
         }
@@ -125,6 +155,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.typing {
+    position: absolute;
+    top: 8rem;
+    left: 0;
+    width: 100vw;
+    height: 200px; 
+    color: white;
+    z-index: 1000;
+}
     .gallery {
         display: flex;
         flex-direction: column;
@@ -208,6 +247,7 @@ export default {
     }
 
     .background {
+        margin-top: 8rem;
         position: relative;
         background-image: url('../assets/aboutUs/niewiadomoRed.png');
     }
