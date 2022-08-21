@@ -4,7 +4,6 @@
   <VideoGallery />
   <Gallery />
   <Slider />
-
 </template>
 
 <script>

@@ -1,8 +1,12 @@
 <template>
+<vue-typed-js :strings="['awesome', 'brilliant']" :loop="true" @onComplete="doSmth()" class="test">
+  <h2>We are a <span class="typing"></span> company!</h2>
+</vue-typed-js>
 <div class="blueScreen">
-    <router-link class="navigation--button" :to="{ name: 'Home' }"><img class="logo" src="../assets/logo.png" alt="logo"></router-link>
+    <router-link class="navigation--button" :to="{ name: 'Home' }">
+        <img class="logo" src="../assets/logo.png" alt="logo">
+    </router-link>
 </div>
-
     <div class="background">
             <div v-for="image in images" :key="image.url" class="gallery" >
                 <img :src="getImgUrl(image.url)" :alt="image.alt" class="gallery__img active niewiadomo">
@@ -33,7 +37,7 @@
 </template>
 
 <script>
-// import VueTypedJs from 'vue-typed-js';
+import VueTypedJs from 'vue-typed-js';
 export default {
     name: 'AboutUs',
     data() {
@@ -63,6 +67,7 @@ export default {
     },
 
     mounted() {
+        console.log(VueTypedJs);
         let niewiadomo = document.querySelector('.niewiadomo');
         let gallery = document.querySelector('.gallery');
         let xd = document.querySelector('.xd');
@@ -142,6 +147,7 @@ export default {
                     const move = () => {
                         window.scrollTo(0, 0);
                         background.style.height = '0';
+                        
                     };
                     let snd = new Audio(this.getBlueUrl('blueScreen.wav'));
                     snd.play();
@@ -155,6 +161,32 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.logo {
+    animation: rotation 2s infite linear;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotaterY(180deg);
+    }
+}
+
+.typing {
+    z-index: 10000;
+    position: relative;
+    color: white;
+}
+.test {
+    position: absolute;
+    left: 0;
+    width: 100vw;
+    height: 10rem;
+    top: 8rem;
+
+}
 .typing {
     position: absolute;
     top: 8rem;

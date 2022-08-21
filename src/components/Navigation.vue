@@ -111,7 +111,7 @@ export default {
         padding: 2rem;
         position: fixed;
         top: 0;
-        width: 100vw;
+        width: 100%;
         z-index: 2;
         font-size: 1rem;
         min-height: 8rem;

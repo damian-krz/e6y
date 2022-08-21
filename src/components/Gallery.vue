@@ -1,7 +1,26 @@
 <template>
+    <div class="categoryContainer">
+        <ul class="categoryContainer__ul">
+            <li class="categoryContainer__ul--li">
+                <a class="categoryContainer__ul--a" @click="overallMethod">overall</a>
+            </li>
+            <li class="categoryContainer__ul--li">
+                <a class="categoryContainer__ul--a" @click="computerMethod">computer</a>
+            </li>
+            <li class="categoryContainer__ul--li">
+                <a class="categoryContainer__ul--a" @click="somethingMethod">something</a>
+            </li>
+        </ul>
+    </div>
     <div class="gallery">
         <div class="gallery__container">
-            <div v-for="image in images" :key="image.url" class="gallery__content" >
+            <div v-if="overall" v-for="image in imagesOverall" :key="image.url" class="gallery__content" >
+                <img :src="getImgUrl(image.url)" :alt="image.alt" class="gallery__content--img">
+            </div>
+            <div v-if="something" v-for="image in imagesComputer" :key="image.url" class="gallery__content" >
+                <img :src="getImgUrl(image.url)" :alt="image.alt" class="gallery__content--img">
+            </div>
+            <div v-if="computer" v-for="image in imagesSomething" :key="image.url" class="gallery__content" >
                 <img :src="getImgUrl(image.url)" :alt="image.alt" class="gallery__content--img">
             </div>
         </div>
@@ -14,7 +33,7 @@ export default {
     name: 'Gallery',
     data() {
         return {
-            images: [
+            imagesOverall: [
                 { url: '1 (1).jpg', alt: 'eyyyyyy' },
                 { url: '1 (2).jpg', alt: 'eyyyyyy' },
                 { url: '1 (3).jpg', alt: 'eyyyyyy' },
@@ -41,6 +60,8 @@ export default {
                 { url: '1 (24).jpg', alt: 'eyyyyyy' },
                 { url: '1 (25).jpg', alt: 'eyyyyyy' },
                 { url: '1 (26).jpg', alt: 'eyyyyyy' },
+                ], 
+            imagesComputer: [
                 { url: '1 (27).jpg', alt: 'eyyyyyy' },
                 { url: '1 (28).jpg', alt: 'eyyyyyy' },
                 { url: '1 (29).jpg', alt: 'eyyyyyy' },
@@ -67,6 +88,8 @@ export default {
                 { url: '1 (50).jpg', alt: 'eyyyyyy' },
                 { url: '1 (51).jpg', alt: 'eyyyyyy' },
                 { url: '1 (52).jpg', alt: 'eyyyyyy' },
+                ],
+            imagesSomething: [
                 { url: '1 (53).jpg', alt: 'eyyyyyy' },
                 { url: '1 (54).jpg', alt: 'eyyyyyy' },
                 { url: '1 (55).jpg', alt: 'eyyyyyy' },
@@ -93,14 +116,44 @@ export default {
                 { url: '1 (76).jpg', alt: 'eyyyyyy' },
                 { url: '1 (77).jpg', alt: 'eyyyyyy' },
                 { url: '1 (78).jpg', alt: 'eyyyyyy' },
-            ],
+                ],
+        overall: true,
+        computer: true,
+        something: true,
         }
     },
     
     methods: {
         getImgUrl: function (imagePath) {
             return require('@/assets/Nagalerie/' + imagePath);
-        }
+        },
+        overallMethod: function() {
+            if(this.overall === true) {
+                this.overall = true;
+            } else {
+                this.overall = !this.overall;
+            }
+            this.computer = false;
+            this.something = false;
+        },
+        computerMethod: function() {
+            this.overall = false;
+            if(this.computer === true) {
+                this.computer = true;
+            } else {
+                this.computer = !this.overall;
+            }
+            this.something = false;
+        },
+        somethingMethod: function() {
+            this.overall = false;
+            this.computer = false;
+            if(this.something === true) {
+                this.something = true;
+            } else {
+                this.something = !this.overall;
+            }
+        },
     }
 
 }
@@ -135,5 +188,37 @@ export default {
         }
     }
 
+    .categoryContainer__ul {
+        display: flex;
+        justify-content: center; 
+        
+        &--li {
+            list-style: none;
+            padding: 0 2rem;
+            font-size: 4rem;
+        }
 
+        &--a {
+            cursor: pointer;
+            font-weight: 900; 
+
+            &:hover {
+                background: linear-gradient(
+                    90deg,
+                    rgba(255, 0, 0, 1) 0%,
+                    rgba(255, 154, 0, 1) 10%,
+                    rgba(208, 222, 33, 1) 20%,
+                    rgba(79, 220, 74, 1) 30%,
+                    rgba(63, 218, 216, 1) 40%,
+                    rgba(47, 201, 226, 1) 50%,
+                    rgba(28, 127, 238, 1) 60%,
+                    rgba(95, 21, 242, 1) 70%,
+                    rgba(186, 12, 248, 1) 80%,
+                    rgba(251, 7, 217, 1) 90%,
+                    rgba(255, 0, 0, 1) 100%
+                );
+                color: white;
+            } 
+        }
+    }
 </style>
